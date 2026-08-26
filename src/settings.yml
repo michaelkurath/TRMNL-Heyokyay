@@ -1,0 +1,58 @@
+---
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+framework_version: 2.3.7
+serverless_language: node
+polling_url: "https://heyokyay.com/feed/\r\nhttps://islieb.de/feed/\r\nhttps://islieb.de/finde/isfies/feed/"
+polling_headers: ''
+polling_body: ''
+id: 243525
+oauth_enabled: 'false'
+oauth_pkce_enabled: 'no'
+oauth_authorize_url: ''
+oauth_token_url: ''
+oauth_scopes: ''
+oauth_scope_separator: ''
+oauth_refresh_url: ''
+oauth_auth_params: ''
+oauth_token_headers: ''
+oauth_token_site: ''
+oauth_token_params: ''
+oauth_token_request_auth_method: ''
+oauth_body_format: ''
+oauth_token_response_metadata: ''
+oauth_authorization_method: ''
+oauth_refresh_params: ''
+oauth_token_field_name: ''
+oauth_expiry_field_name: ''
+oauth_expiry_strategy: ''
+oauth_fixed_expiry_ms: ''
+custom_fields:
+- keyname: author_bio
+  field_type: author_bio
+  name: About This Plugin
+  description: Displays Comics from heyokyay/islieb/isfies
+  category: comics,humor
+  learn_more_url: https://heyokyay.com/
+  email_address: michael.kurath@gmail.com
+- keyname: feed
+  field_type: select
+  name: Comic Feed
+  default: heyokyay
+  options:
+  - EN (heyokyay): heyokyay
+  - DE (islieb): islieb
+  - DE (isfies): isfies
+- keyname: mode
+  field_type: select
+  name: Comic mode
+  default: latest
+  options:
+  - Latest: latest
+  - Random: random
+name: Heyokyay
+description: ''
+refresh_interval: 60
