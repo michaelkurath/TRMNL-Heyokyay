@@ -36,7 +36,7 @@ custom_fields:
   name: About This Plugin
   description: Displays Comics from heyokyay/islieb/isfies
   category: comics,humor
-  learn_more_url: https://heyokyay.com/
+  learn_more_url: https://github.com/michaelkurath/TRMNL-Heyokyay
   email_address: michael.kurath@gmail.com
 - keyname: feed
   field_type: select
@@ -54,5 +54,5 @@ custom_fields:
   - Latest: latest
   - Random: random
 name: Heyokyay
-description: ''
+description: Heyokyay comics for TRMNL
 refresh_interval: 60
