@@ -3,13 +3,9 @@ function transform(input) {
   const feed = settings.feed || "heyokyay";   // heyokyay | islieb | isfies
   const mode = settings.mode || "latest";     // latest | random
 
-  // Polling URL order:
-  // IDX_0 = https://heyokyay.com/feed/
-  // IDX_1 = https://islieb.de/feed/
-  // IDX_2 = https://islieb.de/finde/isfies/feed/
-  let payload = input.IDX_0;
-  if (feed === "islieb") payload = input.IDX_1;
-  if (feed === "isfies") payload = input.IDX_2;
+  // A single dynamic polling URL now fetches only the selected feed.
+  // Keep IDX_0 support so previews remain compatible with wrapped responses.
+  const payload = input?.IDX_0 || input || {};
 
   const channel = (payload?.rss || {}).channel || {};
   const itemsRaw = channel.item;
