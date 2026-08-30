@@ -6,7 +6,8 @@ static_data: ''
 polling_verb: get
 framework_version: 2.3.7
 serverless_language: node
-polling_url: "https://heyokyay.com/feed/\r\nhttps://islieb.de/feed/\r\nhttps://islieb.de/finde/isfies/feed/"
+polling_url: >-
+  {% case feed %}{% when 'islieb' %}https://islieb.de/feed/{% when 'isfies' %}https://islieb.de/finde/isfies/feed/{% else %}https://heyokyay.com/feed/{% endcase %}
 polling_headers: ''
 polling_body: ''
 id: 243525
