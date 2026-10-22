@@ -1,20 +1,34 @@
-<div class="layout">
-  <img
-    class="image image-dither image--contain"
-    src="{{ data.img }}"
-    alt="{{ data.title | default: 'Comic' }}"
-    style="width:100%;height:100%;"
-    />
+<div class="layout" style="height:100%; width:100%; display:flex; align-items:center; justify-content:center;">
+  {% if data.status == 'ok' and data.img != blank %}
+    <img class="image image-dither image--contain" src="{{ data.img }}" alt="{{ data.title | escape }}" style="width:100%; height:100%;" />
+  {% else %}
+    <div style="text-align:center; width:100%; padding:12px;">
+      <div style="font-size:clamp(20px, 4vw, 36px); line-height:1.1; font-weight:700;">
+        {% if data.status == 'empty' %}
+          {% if data.feed == 'heyokyay' %}No comic available{% else %}Kein Comic verfügbar{% endif %}
+        {% else %}
+          {% if data.feed == 'heyokyay' %}Comic temporarily unavailable{% else %}Comic vorübergehend nicht verfügbar{% endif %}
+        {% endif %}
+      </div>
+      <div style="font-size:clamp(12px, 2vw, 18px); line-height:1.2; margin-top:12px;">
+        {% if data.feed == 'heyokyay' %}
+          {% if data.status == 'empty' %}The feed returned no comic images.{% else %}The source website is not responding.{% endif %}
+        {% else %}
+          {% if data.status == 'empty' %}Der Feed enthält keine Comic-Bilder.{% else %}Die Quellwebsite antwortet nicht.{% endif %}
+        {% endif %}
+      </div>
+      <div style="font-size:clamp(11px, 1.7vw, 15px); margin-top:8px;">
+        {% if data.feed == 'heyokyay' %}Will retry automatically.{% else %}Erneuter Versuch erfolgt automatisch.{% endif %}
+      </div>
+    </div>
+  {% endif %}
 </div>
-
 <div class="title_bar">
-  <span class="title">  {% if data.feed == "heyokyay" %}heyokyay
-    {% elsif data.feed == "islieb" %}islieb
-    {% elsif data.feed == "isfies" %}isfies
-    {% else %}Feed
-    {% endif %}</span>
+  <span class="title">{% if data.feed == 'heyokyay' %}heyokyay{% elsif data.feed == 'islieb' %}islieb{% elsif data.feed == 'isfies' %}isfies{% else %}Feed{% endif %}</span>
   <span class="instance">
-
-    {{ data.title }}
+    {% if data.status == 'ok' %}{{ data.title | escape | truncate: 85 }}
+    {% elsif data.http_status != blank %}HTTP {{ data.http_status }}
+    {% elsif data.feed == 'heyokyay' %}Feed unavailable
+    {% else %}Feed nicht verfügbar{% endif %}
   </span>
 </div>
