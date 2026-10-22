@@ -7,7 +7,7 @@ polling_verb: get
 framework_version: 2.3.7
 serverless_language: node
 refresh_interval_floor: ''
-polling_url: "{% case feed %}{% when 'islieb' %}https://islieb.de/feed/{% when 'isfies' %}https://islieb.de/finde/isfies/feed/{% else %}https://heyokyay.com/feed/{% endcase %}"
+polling_url: "{% case feed %}{% when 'islieb' %}https://mastodon.social/@islieb/media.rss{% when 'isfies' %}https://mastodon.social/@isfies/media.rss{% else %}https://mastodon.social/@heyokyay/media.rss{% endcase %}"
 polling_headers: ''
 polling_body: ''
 id: 243525
